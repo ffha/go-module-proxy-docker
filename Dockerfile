@@ -3,7 +3,7 @@ RUN apk add git make mercurial subversion
 WORKDIR /usr/src
 RUN git clone https://github.com/goproxyio/goproxy .
 RUN make
-FROM alpine
+FROM alpine as runner
 RUN apk add tini
 COPY --from=builder /usr/src/bin/goproxy /usr/bin/goproxy
 ENTRYPOINT ["/sbin/tini", "--"]
