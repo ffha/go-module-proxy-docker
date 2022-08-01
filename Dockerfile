@@ -5,7 +5,7 @@ RUN git clone https://github.com/goproxyio/goproxy .
 RUN git checkout v2.0.7
 RUN make
 FROM alpine as runner
-RUN apk add tini
+RUN apk add tini mercurial subversion git
 COPY --from=builder /usr/src/bin/goproxy /usr/bin/goproxy
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/usr/bin/goproxy", "-listen=0.0.0.0:80", "-cacheDir=/tmp"]
