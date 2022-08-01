@@ -1,5 +1,5 @@
 FROM golang:alpine as builder
-RUN apk add git make mercurial subversion
+RUN apk add git build-base mercurial subversion
 WORKDIR /usr/src
 RUN git clone https://github.com/goproxyio/goproxy .
 RUN make
